@@ -1,19 +1,25 @@
 import * as React from 'react';
-
-import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-awesome-library';
+import {
+  StyleSheet,
+  View,
+  SafeAreaView,
+  Platform,
+  StatusBar,
+} from 'react-native';
+import { Table } from 'react-native-awesome-library';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
-  React.useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
+  const safeareastyle = {
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+    flex: 1,
+  };
 
   return (
-    <View style={styles.container}>
-      <Text>Result: {result}</Text>
-    </View>
+    <SafeAreaView style={safeareastyle}>
+      <View style={styles.container}>
+        <Table />
+      </View>
+    </SafeAreaView>
   );
 }
 
@@ -22,10 +28,5 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
   },
 });
