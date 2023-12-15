@@ -11,11 +11,13 @@ npm install react-native-awesome-library
 ## Usage
 
 ```js
-import { multiply } from 'react-native-awesome-library';
+import { Table } from 'react-native-awesome-library';
 
 // ...
 
-const result = await multiply(3, 7);
+<View>
+  <Table />
+</View>;
 ```
 
 ## Contributing
